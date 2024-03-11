@@ -1,0 +1,114 @@
+@use 'variaveis/reset.scss' as*;
+@use 'variaveis/cores.scss' as*;
+@use 'variaveis/variaveis.scss' as*;
+@use 'sass:math';
+
+@function PxParaEm($alvoEmPixel, $contextPixel:16px) {
+    @return math.div($alvoEmPixel, $contextPixel)+em;
+  }
+
+li {
+    list-style: none;
+}
+
+body {
+    background-color: $cordeFundo;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: $corPrimaria;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: PxParaEm(16px) 0;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    font-weight: bold;
+    margin-left: PxParaEm(24px);
+}
+
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: PxParaEm(56px) 0;
+}
+
+h2 {
+    font-size: PxParaEm(48px);
+    text-align: center;
+}
+
+.products {
+    margin-top: PxParaEm(40px);
+    display: grid;
+    grid-template-columns: repeat(3, 32.66%);
+    column-gap: 1%;
+    row-gap: 4%;
+    width: 100%;
+}
+
+.product-item img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.product-button {
+    display: block;
+    background-color: $cordosBotoes;
+    color: #fff;
+    text-align: center;
+    padding: PxParaEm(8px) 0;
+    border-radius: 8px;
+    margin-top: PxParaEm(8px);
+    text-decoration: none;
+
+    &:hover {
+        background-color: darken($cordosBotoes,30%);
+    }
+}
+@media screen and (max-width: $tablet) {
+    .container {
+        max-width: 80%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 48.5%);
+        column-gap: 3%;
+    }
+}
+
+@media screen and (max-width: $mobile) {
+    .products {
+        display: block;
+    }
+
+    .product-item  {
+        margin-bottom: PxParaEm(32px);
+    
+    img {
+        width: 100%;
+        border-radius: 16px;
+    }
+}
+
+}
